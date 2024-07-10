@@ -1,4 +1,5 @@
-﻿document.getElementById('btnSubmit').addEventListener('click', function (e) {
+﻿document.getElementById('btnSubmit')
+.addEventListener('click', function (e) {
     e.preventDefault();
 
     handleSubmitAsync();
@@ -18,6 +19,6 @@ function handleSubmitAsync() {
         .then(json => {
             console.log(json);
 
-            document.getElementById('urlResult').innerHTML = json = shortUrl;
+            document.getElementById('urlResult').innerHTML = json.shortUrl;
         })
 }

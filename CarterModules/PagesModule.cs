@@ -24,6 +24,7 @@ public class PagesModule : CarterModule
             if (shortUrl == null)
             {
                 resp.Redirect("/");
+                return Task.CompletedTask;
             }
 
             resp.Redirect(shortUrl.Url);

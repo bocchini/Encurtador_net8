@@ -19,7 +19,7 @@ public class UrlModule : CarterModule
         app.MapPost("/", async (HttpRequest req, HttpResponse resp) =>
         {
             var shortUrl = await req.ReadFromJsonAsync<ShortUrl>();
-            if (Uri.TryCreate(uriString: shortUrl.Url, UriKind.Absolute, out var url))
+            if (Uri.TryCreate(shortUrl.Url, UriKind.Absolute, out var uriParsed))
             {
                 _liteDatabase.GetCollection<ShortUrl>(BsonAutoId.Guid).Insert(shortUrl);
 
