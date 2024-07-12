@@ -1,7 +1,8 @@
 # Encurtador
 
-##  Tecnologias
+##  Tecnologias utilizadas
 
 .Net 8
 Carter
 LiteDb
+Nanoid

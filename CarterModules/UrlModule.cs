@@ -1,8 +1,8 @@
 ﻿using Carter;
 using LiteDB;
 using System.Net;
-using CarterRequest = Carter.Request;
 using Encurtador.Model;
+using NanoidDotNet;
 
 namespace Encurtador.CarterModules;
 
@@ -21,6 +21,7 @@ public class UrlModule : CarterModule
             var shortUrl = await req.ReadFromJsonAsync<ShortUrl>();
             if (Uri.TryCreate(shortUrl.Url, UriKind.Absolute, out var uriParsed))
             {
+                shortUrl.Chunck = Nanoid.Generate(size: 9);
                 _liteDatabase.GetCollection<ShortUrl>(BsonAutoId.Guid).Insert(shortUrl);
 
                 resp.StatusCode = (int)HttpStatusCode.OK;
